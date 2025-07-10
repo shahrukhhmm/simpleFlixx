@@ -22,7 +22,7 @@
 @section('content')
 
    @if(Auth::user()->role == 'admin')
-    <div class="container-fluid mt-3" style="background: url({{ asset('adminAssets/images/user/7.jpg') }}) no-repeat center center; background-size: cover;">
+    <div class="container-fluid mt-3">
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card shadow border-0">
