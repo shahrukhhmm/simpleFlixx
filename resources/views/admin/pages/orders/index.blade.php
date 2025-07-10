@@ -1,5 +1,70 @@
 @extends('admin.layout.app')
 
+<style>
+    label {
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    .form-control {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        font-size: 1rem !important;
+    }
+    .form-control:focus {
+        border-color: #ff69b4;
+        box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.25);
+    }
+    .checkbox-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .checkbox-group input[type="checkbox"] {
+        margin-right: 0.5rem;
+    }
+    .order-step {
+        display: none;
+    }
+    .order-step.active {
+        display: block;
+    }
+    .input-error {
+        color: red;
+        display: none;
+    }
+    .alert {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0.25rem;
+    }
+    .alert-warning {
+        background-color: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeeba;
+        margin-top: 1rem;
+    }
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        margin-top: 1rem;
+    }
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        margin-top: 1rem;
+    }
+    .card{
+        /* background: transparent!important; */
+        background: linear-gradient(135deg, #fff0f6a2, #ffe3ec8f ), url('{{ asset('adminAssets/simplefixxx.jpg') }}')!important;
+        background-size: cover !important;
+        background-position: top center!important;
+        background-repeat: no-repeat !important;
+    }
+</style>
 @section('content')
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     @if ($errors->any())
@@ -186,7 +251,7 @@
                                 </div>
                                 <div class="order-step" data-step="2" style="display:none;">
                                     <h3 class="text-2xl font-semibold text-pink-600">Important Notice</h3>
-                                    <div class="alert alert-warning" role="alert">
+                                    <div class="alert alert-warning display-5" role="alert">
                                         <strong>New Compliance Measures:</strong> All new or returning patients seeking an increase in their medication schedule a call with a physician. If you are a new patient, or are seeking an increase in your dose, you will be directed to schedule an online doctor consult. If you answered accordingly, please continue. For any questions, please contact <a href="mailto:support@simplefix.com">support@simplefix.com</a> (your order could be delayed if consulted and payment refunded).
                                     </div>
                                     <input type="hidden" name="notice_acknowledged" value="true">

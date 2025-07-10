@@ -51,7 +51,7 @@
                 }
 
                 .menu-item.active {
-                    background-color: #4154f1;
+                    background-color: pink;
                     color: white;
                 }
 

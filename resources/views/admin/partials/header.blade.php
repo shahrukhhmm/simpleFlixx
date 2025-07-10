@@ -23,7 +23,7 @@
                 <li class="icons dropdown">
                     <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                         <span class="activity active"></span>
-                        <img src="{{ asset('adminAssets/images/user/1.png') }}" height="60" width="60" alt="">
+                        <img src="{{ asset('adminAssets/images/avatar/avatar-square1.png') }}" height="60" width="60" alt="">
                     </div>
                     <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                         <div class="dropdown-content-body">
