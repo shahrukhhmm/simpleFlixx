@@ -20,7 +20,7 @@ class Order extends Model
     protected $casts = [
         'health_history' => 'array',
         'weight_management_history' => 'array',
-        'medication_requests' => 'string', // Changed to string since it's a single value
+        'medication_requests' => 'array',
         'add_ons' => 'array',
         'shipping_options' => 'array',
         'consent' => 'array',

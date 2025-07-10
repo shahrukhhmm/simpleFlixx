@@ -57,8 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
-    Route::get('/orders/form/{step?}', [OrderController::class, 'showForm'])->name('order.form');
-    Route::post('/orders/save/{step}', [OrderController::class, 'saveStep'])->name('order.save');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders/details/{id}', [OrderController::class, 'getOrderDetails'])->name('admin.orders.details');
     Route::get('/orders/edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
     Route::put('/orders/update/{id}', [OrderController::class, 'update'])->name('order.update');
