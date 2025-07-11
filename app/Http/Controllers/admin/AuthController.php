@@ -22,7 +22,11 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('admin.dashboard');
+            if(Auth::user()->status == 'active'){
+                return redirect()->route('admin.dashboard');
+            }else{
+                return redirect()->route('login')->with('error', 'Your account is not active. Please contact the administrator.');
+            }
         }
 
         return back()->withErrors(['email' => 'Invalid credentials.']);

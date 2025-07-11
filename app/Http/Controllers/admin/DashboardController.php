@@ -28,25 +28,16 @@ class DashboardController extends Controller
             ]);
         }
         else if($user->role == 'doctor') {
-            return redirect()->route('admin.doctors.index',compact('totalCustomers', 'totalDoctors', 'totalPharmacies'))->with([
+            return redirect()->route('admin.doctors.dashboard',compact('totalCustomers', 'totalDoctors', 'totalPharmacies'))->with([
                 'message' => 'Welcome to the Doctor Dashboard',
                 'alert-type' => 'success'
             ]);
         } elseif($user->role == 'pharmacy') {
-            return redirect()->route('admin.product.index',compact('totalCustomers', 'totalDoctors', 'totalPharmacies'))->with([
+            return redirect()->route('admin.pharmacies.dashboard',compact('totalCustomers', 'totalDoctors', 'totalPharmacies'))->with([
                 'message' => 'Welcome to the Pharmacy Dashboard',
                 'alert-type' => 'success'
             ]);
         }
-        // }elseif($user->role == 'doctor') {
-        //     return redirect()->route('admin.table.index')->with([
-
-        //     ]);
-        // } elseif($user->role == 'pharmacy') {
-        //     return redirect()->route('admin.product.index')->with([
-
-        //     ]);
-        // }
 
     }
 

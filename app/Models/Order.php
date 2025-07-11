@@ -15,6 +15,7 @@ class Order extends Model
         'shipping_options',
         'consent',
         'payment_details',
+        'status',
     ];
 
     protected $casts = [

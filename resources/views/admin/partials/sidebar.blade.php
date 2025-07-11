@@ -197,16 +197,16 @@
                     </a>
                 </li>
 
-            @elseif ($rolename == 'Doctor')
+            @elseif ($rolename == 'doctor')
                 <li>
-                    <a href="{{ url('/') }}" class="menu-item {{ request()->is('/') ? 'active' : '' }}">
+                    <a href="{{ url('/doctor/dashboard') }}" class="menu-item {{ request()->is('/doctor/dashboard') ? 'active' : '' }}">
                         <i class="fas fa-home text-blue-500"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ url('orders') }}" class="menu-item {{ request()->is('orders') ? 'active' : '' }}">
+                    <a href="{{ url('orders/doctor') }}" class="menu-item {{ request()->is('orders/doctor') ? 'active' : '' }}">
                         <i class="fas fa-shopping-cart text-yellow-500"></i>
                         <span>Orders</span>
                     </a>
@@ -219,11 +219,17 @@
                     </a>
                 </li>
 
-            @elseif ($rolename == 'Pharmacy')
+            @elseif ($rolename == 'pharmacy')
                 <li>
-                    <a href="{{ url('/') }}" class="menu-item {{ request()->is('/') ? 'active' : '' }}">
+                    <a href="{{ url('/pharmacy/dashboard') }}" class="menu-item {{ request()->is('/pharmacy/dashboard') ? 'active' : '' }}">
                         <i class="fas fa-home text-blue-500"></i>
                         <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/orders/pharmacy') }}" class="menu-item {{ request()->is('/orders/pharmacy') ? 'active' : '' }}">
+                        <i class="fas fa-shopping-cart text-yellow-500"></i>
+                        <span>Orders</span>
                     </a>
                 </li>
             @endif

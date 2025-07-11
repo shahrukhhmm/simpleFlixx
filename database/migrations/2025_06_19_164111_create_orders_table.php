@@ -21,6 +21,7 @@ return new class extends Migration
             $table->json('shipping_options')->nullable();
             $table->json('consent')->nullable();
             $table->json('payment_details')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

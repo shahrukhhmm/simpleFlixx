@@ -136,36 +136,36 @@
                                             </select>
                                             <div class="input-error" style="color:red;display:none"></div>
                                         </div>
-                                        <div>
+                                            <div>
                                             <label class="block text-gray-700">Your Weight (lbs) <span class="text-red-500 ml-1">*</span></label>
-                                            <input type="number" name="weight_lbs" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['weight_lbs']) ? $orderData['health_history']['weight_lbs'] : '' }}" required>
+                                                <input type="number" name="weight_lbs" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['weight_lbs']) ? $orderData['health_history']['weight_lbs'] : '' }}" required>
                                             <div class="input-error" style="color:red;display:none"></div>
-                                        </div>
-                                        <div>
+                                            </div>
+                                            <div>
                                             <label class="block text-gray-700">Height (Feet) <span class="text-red-500 ml-1">*</span></label>
-                                            <input type="number" name="height_feet" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['height_feet']) ? $orderData['health_history']['height_feet'] : '' }}" required>
+                                                <input type="number" name="height_feet" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['height_feet']) ? $orderData['health_history']['height_feet'] : '' }}" required>
                                             <div class="input-error" style="color:red;display:none"></div>
-                                        </div>
-                                        <div>
+                                            </div>
+                                            <div>
                                             <label class="block text-gray-700">Height (Inches) <span class="text-red-500 ml-1">*</span></label>
-                                            <input type="number" name="height_inches" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['height_inches']) ? $orderData['health_history']['height_inches'] : '' }}" required>
+                                                <input type="number" name="height_inches" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['height_inches']) ? $orderData['health_history']['height_inches'] : '' }}" required>
                                             <div class="input-error" style="color:red;display:none"></div>
                                         </div>
-                                        <div>
-                                            <label class="block text-gray-700">BMI</label>
-                                            <input type="number" name="bmi" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['bmi']) ? $orderData['health_history']['bmi'] : '' }}" readonly>
-                                        </div>
-                                        <div>
-                                            <label class="block text-gray-700">Weight (lbs)</label>
-                                            <input type="number" name="weight_lbs_display" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['weight_lbs_display']) ? $orderData['health_history']['weight_lbs_display'] : '' }}" readonly>
-                                        </div>
-                                        <div>
-                                            <label class="block text-gray-700">Height (ft/in)</label>
-                                            <input type="text" name="height_ft_in" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['height_ft_in']) ? $orderData['health_history']['height_ft_in'] : '' }}" readonly>
-                                        </div>
-                                        <div>
-                                            <label class="block text-gray-700">Height (cm)</label>
-                                            <input type="number" name="height_cm" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['height_cm']) ? $orderData['health_history']['height_cm'] : '' }}" readonly>
+                                            <div>
+                                                <label class="block text-gray-700">BMI</label>
+                                                <input type="number" name="bmi" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['bmi']) ? $orderData['health_history']['bmi'] : '' }}" readonly>
+                                            </div>
+                                            <div>
+                                                <label class="block text-gray-700">Weight (lbs)</label>
+                                                <input type="number" name="weight_lbs_display" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['weight_lbs_display']) ? $orderData['health_history']['weight_lbs_display'] : '' }}" readonly>
+                                            </div>
+                                            <div>
+                                                <label class="block text-gray-700">Height (ft/in)</label>
+                                                <input type="text" name="height_ft_in" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['height_ft_in']) ? $orderData['health_history']['height_ft_in'] : '' }}" readonly>
+                                            </div>
+                                            <div>
+                                                <label class="block text-gray-700">Height (cm)</label>
+                                                <input type="number" name="height_cm" class="form-control w-full p-2 border rounded" value="{{ isset($orderData['health_history']['height_cm']) ? $orderData['health_history']['height_cm'] : '' }}" readonly>
                                         </div>
                                         <div>
                                             <label class="block text-gray-700">Have you been diagnosed with any of these conditions? <span class="text-red-500 ml-1">*</span></label>
@@ -198,15 +198,15 @@
                                         <div>
                                             <label class="block text-gray-700">Which weight loss medications have you tried? <span class="text-red-500 ml-1">*</span></label>
                                             <div class="checkbox-group">
-                                                <div class="space-y-2">
-                                                    <label><input type="checkbox" name="medications[]" value="glp1" {{ isset($orderData['health_history']['medications']) && in_array('glp1', $orderData['health_history']['medications']) ? 'checked' : '' }} required> GLP-1</label>
-                                                    <label><input type="checkbox" name="medications[]" value="glp1gip" {{ isset($orderData['health_history']['medications']) && in_array('glp1gip', $orderData['health_history']['medications']) ? 'checked' : '' }}> GLP-1/GIP</label>
-                                                    <label><input type="checkbox" name="medications[]" value="orlistat" {{ isset($orderData['health_history']['medications']) && in_array('orlistat', $orderData['health_history']['medications']) ? 'checked' : '' }}> Orlistat (Xenical, Alli)</label>
-                                                    <label><input type="checkbox" name="medications[]" value="phentermine_topiramate" {{ isset($orderData['health_history']['medications']) && in_array('phentermine_topiramate', $orderData['health_history']['medications']) ? 'checked' : '' }}> Phentermine-topiramate (Qsymia)</label>
-                                                    <label><input type="checkbox" name="medications[]" value="reg_phentermine" {{ isset($orderData['health_history']['medications']) && in_array('reg_phentermine', $orderData['health_history']['medications']) ? 'checked' : '' }}> Reg Phentermine 37.5 mg</label>
-                                                    <label><input type="checkbox" name="medications[]" value="naltrexone_bupropion" {{ isset($orderData['health_history']['medications']) && in_array('naltrexone_bupropion', $orderData['health_history']['medications']) ? 'checked' : '' }}> Naltrexone-bupropion (Contrave)</label>
-                                                    <label><input type="checkbox" name="medications[]" value="liraglutide" {{ isset($orderData['health_history']['medications']) && in_array('liraglutide', $orderData['health_history']['medications']) ? 'checked' : '' }}> Liraglutide (Saxenda)</label>
-                                                    <label><input type="checkbox" name="medications[]" value="none" {{ isset($orderData['health_history']['medications']) && in_array('none', $orderData['health_history']['medications']) ? 'checked' : '' }}> None</label>
+                                            <div class="space-y-2">
+                                                <label><input type="checkbox" name="medications[]" value="glp1" {{ isset($orderData['health_history']['medications']) && in_array('glp1', $orderData['health_history']['medications']) ? 'checked' : '' }} required> GLP-1</label>
+                                                <label><input type="checkbox" name="medications[]" value="glp1gip" {{ isset($orderData['health_history']['medications']) && in_array('glp1gip', $orderData['health_history']['medications']) ? 'checked' : '' }}> GLP-1/GIP</label>
+                                                <label><input type="checkbox" name="medications[]" value="orlistat" {{ isset($orderData['health_history']['medications']) && in_array('orlistat', $orderData['health_history']['medications']) ? 'checked' : '' }}> Orlistat (Xenical, Alli)</label>
+                                                <label><input type="checkbox" name="medications[]" value="phentermine_topiramate" {{ isset($orderData['health_history']['medications']) && in_array('phentermine_topiramate', $orderData['health_history']['medications']) ? 'checked' : '' }}> Phentermine-topiramate (Qsymia)</label>
+                                                <label><input type="checkbox" name="medications[]" value="reg_phentermine" {{ isset($orderData['health_history']['medications']) && in_array('reg_phentermine', $orderData['health_history']['medications']) ? 'checked' : '' }}> Reg Phentermine 37.5 mg</label>
+                                                <label><input type="checkbox" name="medications[]" value="naltrexone_bupropion" {{ isset($orderData['health_history']['medications']) && in_array('naltrexone_bupropion', $orderData['health_history']['medications']) ? 'checked' : '' }}> Naltrexone-bupropion (Contrave)</label>
+                                                <label><input type="checkbox" name="medications[]" value="liraglutide" {{ isset($orderData['health_history']['medications']) && in_array('liraglutide', $orderData['health_history']['medications']) ? 'checked' : '' }}> Liraglutide (Saxenda)</label>
+                                                <label><input type="checkbox" name="medications[]" value="none" {{ isset($orderData['health_history']['medications']) && in_array('none', $orderData['health_history']['medications']) ? 'checked' : '' }}> None</label>
                                                 </div>
                                                 <div class="input-error" style="color:red;display:none"></div>
                                             </div>
@@ -342,20 +342,20 @@
                                         <div>
                                             <h4 class="text-lg font-semibold text-gray-700">Shipping Address <span class="text-red-500 ml-1">*</span></h4>
                                             <div>
-                                                <input type="text" name="shipping_address1" placeholder="Shipping Address" class="form-control w-full p-2 border rounded mb-2" value="{{ isset($orderData['shipping_options']['shipping_address1']) ? $orderData['shipping_options']['shipping_address1'] : '' }}" required>
+                                            <input type="text" name="shipping_address1" placeholder="Shipping Address" class="form-control w-full p-2 border rounded mb-2" value="{{ isset($orderData['shipping_options']['shipping_address1']) ? $orderData['shipping_options']['shipping_address1'] : '' }}" required>
                                                 <div class="input-error" style="color:red;display:none"></div>
                                             </div>
                                             <input type="text" name="shipping_address2" placeholder="Address Line 2" class="form-control w-full p-2 border rounded mb-2" value="{{ isset($orderData['shipping_options']['shipping_address2']) ? $orderData['shipping_options']['shipping_address2'] : '' }}">
                                             <div>
-                                                <input type="text" name="shipping_city" placeholder="City" class="form-control w-full p-2 border rounded mb-2" value="{{ isset($orderData['shipping_options']['shipping_city']) ? $orderData['shipping_options']['shipping_city'] : '' }}" required>
+                                            <input type="text" name="shipping_city" placeholder="City" class="form-control w-full p-2 border rounded mb-2" value="{{ isset($orderData['shipping_options']['shipping_city']) ? $orderData['shipping_options']['shipping_city'] : '' }}" required>
                                                 <div class="input-error" style="color:red;display:none"></div>
                                             </div>
                                             <div>
-                                                <input type="text" name="shipping_state" placeholder="State" class="form-control w-full p-2 border rounded mb-2" value="{{ isset($orderData['shipping_options']['shipping_state']) ? $orderData['shipping_options']['shipping_state'] : '' }}" required>
+                                            <input type="text" name="shipping_state" placeholder="State" class="form-control w-full p-2 border rounded mb-2" value="{{ isset($orderData['shipping_options']['shipping_state']) ? $orderData['shipping_options']['shipping_state'] : '' }}" required>
                                                 <div class="input-error" style="color:red;display:none"></div>
                                             </div>
                                             <div>
-                                                <input type="text" name="shipping_zip" placeholder="Zip Code" class="form-control w-full p-2 border rounded mb-2" value="{{ isset($orderData['shipping_options']['shipping_zip']) ? $orderData['shipping_options']['shipping_zip'] : '' }}" required>
+                                            <input type="text" name="shipping_zip" placeholder="Zip Code" class="form-control w-full p-2 border rounded mb-2" value="{{ isset($orderData['shipping_options']['shipping_zip']) ? $orderData['shipping_options']['shipping_zip'] : '' }}" required>
                                                 <div class="input-error" style="color:red;display:none"></div>
                                             </div>
                                         </div>
@@ -464,7 +464,7 @@
             </div>
         </div>
 
-        <script>
+    <script>
         let orderData = {
             health_history: {},
             weight_management_history: {},

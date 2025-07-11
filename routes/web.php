@@ -8,6 +8,8 @@ use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\DoctorController;
 use App\Http\Controllers\admin\PharmacyController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\DoctorDashboardController;
+use App\Http\Controllers\admin\PharmacyDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/doctors/{id}/edit', [DoctorController::class, 'edit'])->name('admin.doctors.edit');
     Route::put('/doctors/{id}', [DoctorController::class, 'update'])->name('admin.doctors.update');
     Route::delete('/doctors/{id}', [DoctorController::class, 'destroy'])->name('admin.doctors.destroy');
+    Route::get('/doctor/dashboard', [DoctorDashboardController::class, 'index'])->name('admin.doctors.dashboard');
 
     // Admin routes for pharmacies
     Route::get('/pharmacies', [PharmacyController::class, 'index'])->name('admin.pharmacies.index');
@@ -54,15 +57,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pharmacies/{id}/edit', [PharmacyController::class, 'edit'])->name('admin.pharmacies.edit');
     Route::put('/pharmacies/{id}', [PharmacyController::class, 'update'])->name('admin.pharmacies.update');
     Route::delete('/pharmacies/{id}', [PharmacyController::class, 'destroy'])->name('admin.pharmacies.destroy');
+    Route::get('/pharmacy/dashboard', [PharmacyDashboardController::class, 'index'])->name('admin.pharmacies.dashboard');
 
 
-Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/orders/doctor', [OrderController::class, 'doctorIndex'])->name('order.doctor.index');
+    Route::get('/orders/pharmacy', [OrderController::class, 'pharmacyIndex'])->name('order.pharmacy.index');
+    Route::get('/orders/add', [OrderController::class, 'add'])->name('order.add');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders/details/{id}', [OrderController::class, 'getOrderDetails'])->name('admin.orders.details');
     Route::get('/orders/edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
     Route::put('/orders/update/{id}', [OrderController::class, 'update'])->name('order.update');
     Route::delete('/orders/destroy/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
     Route::get('/orders/success', [OrderController::class, 'success'])->name('order.success');
+    Route::get('/orders/show/{id}', [OrderController::class, 'show'])->name('order.show');
+    Route::post('/orders/update-status/{id}', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
 
 
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');

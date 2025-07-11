@@ -5,26 +5,44 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Manage Orders</h4>
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h4 class="card-title mb-0">Manage Orders</h4>
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'customer')
+                        <a href="{{ route('order.add') }}" class="btn btn-primary">Add Order</a>
+                    @endif
                 </div>
             </div>
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Order List</h4>
-                    <table id="orderTable" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>User Name</th>
-                                <th>Email</th>
-                                <th>Created At</th>
-                                <th>Updated At</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table id="orderTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>User Name</th>
+                                    <th>Email</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($orders as $order)
+                                <tr>
+                                    <td>{{ $order->id }}</td>
+                                    <td>{{ $order->user->name }}</td>
+                                    <td>{{ $order->user->email }}</td>
+                                    <td>{{ $order->created_at }}</td>
+                                    <td>{{ $order->updated_at }}</td>
+                                    <td>
+                                        <a href="{{ route('order.show', $order->id) }}" class="btn btn-sm btn-info">View Details</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,19 +85,7 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
-    var table = $('#orderTable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '{{ route('admin.orders.get') }}',
-        columns: [
-            { data: 'id', name: 'orders.id' },
-            { data: 'name', name: 'users.name' },
-            { data: 'email', name: 'users.email' },
-            { data: 'created_at', name: 'orders.created_at' },
-            { data: 'updated_at', name: 'orders.updated_at' },
-            { data: 'action', name: 'action', orderable: false, searchable: false }
-        ]
-    });
+    var table = $('#orderTable').DataTable();
 
     // Handle detail button click
     $(document).on('click', '.detail-btn', function() {
@@ -123,10 +129,6 @@ $(document).ready(function() {
             }
         });
     });
-
-    // Remove edit and delete functionality
-    $(document).off('click', '.edit-order');
-    $(document).off('click', '.delete-order');
 });
 </script>
 @endpush

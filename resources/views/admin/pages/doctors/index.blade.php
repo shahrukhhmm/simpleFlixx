@@ -90,26 +90,28 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Doctor List</h4>
-                    <table id="doctorTable" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Date of Birth</th>
-                                <th>Sex</th>
-                                <th>State</th>
-                                <th>Status</th>
-                                <th>Education</th>
-                                <th>Specialty</th>
-                                <th>Experience</th>
-                                <th>Hospital</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                    <div style="overflow-x: auto; width: 100%;">
+                        <table id="doctorTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Date of Birth</th>
+                                    <th>Sex</th>
+                                    <th>State</th>
+                                    <th>Status</th>
+                                    <th>Education</th>
+                                    <th>Specialty</th>
+                                    <th>Experience</th>
+                                    <th>Hospital</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

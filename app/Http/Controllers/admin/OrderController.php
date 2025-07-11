@@ -14,9 +14,26 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('user')->get();
+        $orders = Order::where('user_id', Auth::id())->get();
         session()->put('order_data', ['step' => 1, 'user_id' => Auth::id()]);
-        return view('admin.pages.orders.index', compact('orders'));
+        return view('admin.pages.orders.view', compact('orders'));
+    }
+
+    public function doctorIndex()
+    {
+        $orders = Order::where('status', 'pending')->with('user')->get();
+        return view('admin.pages.orders.view', compact('orders'));
+    }
+
+    public function pharmacyIndex()
+    {
+        $orders = Order::where('status', 'Approved')->with('user')->get();
+        return view('admin.pages.orders.view', compact('orders'));
+    }
+
+    public function add()
+    {
+        return view('admin.pages.orders.index');
     }
 
     public function getOrders(Request $request)
@@ -149,6 +166,12 @@ class OrderController extends Controller
         return response()->json($order);
     }
 
+    public function show($id)
+    {
+        $order = Order::with('user')->findOrFail($id);
+        return view('admin.pages.orders.show', compact('order'));
+    }
+
     public function edit($id)
     {
         $order = Order::with('user')->findOrFail($id);
@@ -171,6 +194,17 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $order->update($request->all());
         return response()->json(['success' => 'Order updated successfully.']);
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:Approved,Rejected,Pending'
+        ]);
+        $order = Order::findOrFail($id);
+        $order->status = $request->status;
+        $order->save();
+        return response()->json(['success' => true]);
     }
 
     public function destroy($id)

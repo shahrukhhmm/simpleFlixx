@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 
@@ -63,13 +62,30 @@
                                 </a>
 
                                 @if ($errors->any())
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position:fixed; top:15px; right:15px; z-index:10">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; top:15px; right:15px; z-index:10">
                                         <ul>
                                             @foreach ($errors->all() as $error)
                                                 <li>{{ $error }}</li>
                                             @endforeach
-
                                         </ul>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
+                                @if(session('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="position:fixed; top:15px; right:15px; z-index:10">
+                                        {{ session('success') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
+                                @if(session('error'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; top:15px; right:15px; z-index:10">
+                                        {{ session('error') }}
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -104,12 +120,6 @@
         </div>
     </div>
 
-
-
-
-
-
-
     <!--**********************************
         Scripts
     ***********************************-->
@@ -120,8 +130,3 @@
     <script src="{{asset('adminAssets/js/styleSwitcher.js')}}"></script>
 </body>
 </html>
-
-
-
-
-

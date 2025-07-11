@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-name" content="quixlab" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Simple Fix</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo.svg') }}">
     <link href="{{ asset('adminAssets/plugins/pg-calendar/css/pignose.calendar.min.css') }}" rel="stylesheet">
@@ -142,6 +143,13 @@
         });
     </script>
 
+    <style>
+        @media (max-width: 1200px) {
+            .content-body {
+                padding-left: 70px;
+            }
+        }
+    </style>
     @stack('scripts')
 </body>
 </html>
