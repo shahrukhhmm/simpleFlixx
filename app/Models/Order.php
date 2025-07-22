@@ -8,6 +8,7 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id',
+        'doctor_id',
         'health_history',
         'weight_management_history',
         'medication_requests',
@@ -16,6 +17,7 @@ class Order extends Model
         'consent',
         'payment_details',
         'status',
+        'note',
     ];
 
     protected $casts = [
@@ -31,5 +33,10 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo(User::class, 'doctor_id');
     }
 }

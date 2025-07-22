@@ -15,10 +15,19 @@
                     <button id="reject-btn" class="btn btn-danger ml-2"
                         {{ $order->status == 'Rejected' ? 'disabled' : '' }}><i
                             class="fas fa-times mr-1"></i>Reject</button>
+                    <button id="pending-btn" class="btn btn-warning ml-2" {{ $order->status == 'Pending' ? 'disabled' : '' }}><i class="fas fa-hourglass-half mr-1"></i>Set Pending</button>
                 @endif
             </div>
         </div>
-
+        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'doctor')
+        <div class="mb-4">
+            <h4 class="text-lg font-semibold text-gray-700 mb-2 flex items-center"><i
+                    class="fas fa-sticky-note mr-2 text-gray-500"></i>Note</h4>
+            <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+                <textarea name="note" id="note" class="form-control" rows="3">{{ $order->note ?? '' }}</textarea>
+            </div>
+        </div>
+        @endif
         <div class="card shadow-lg rounded-lg">
             <div class="card-header bg-pink-100 border-bottom-0 rounded-t-lg">
                 <h3 class="card-title text-2xl font-bold text-pink-600 flex items-center">
@@ -130,6 +139,7 @@
                             <p><strong>Signature:</strong> {{ $consent['signature'] ?? '' }}</p>
                         </div>
                     </div>
+                    @if(Auth::user()->role == 'user' || Auth::user()->role == 'admin')
                     <div>
                         <h4 class="text-lg font-semibold text-gray-700 mb-2 flex items-center"><i
                                 class="fas fa-credit-card mr-2 text-blue-400"></i>Payment Details</h4>
@@ -144,6 +154,7 @@
                             </ul>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -151,6 +162,7 @@
     @push('scripts')
         <script>
             function updateStatus(newStatus) {
+                const note = document.getElementById('note').value;
                 if (!confirm('Are you sure you want to ' + newStatus.toLowerCase() + ' this order?')) return;
                 fetch("{{ url('/orders/update-status/' . $order->id) }}", {
                         method: 'POST',
@@ -159,18 +171,21 @@
                             'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
                         },
                         body: JSON.stringify({
-                            status: newStatus
+                            status: newStatus,
+                            note: note
                         })
                     })
                     .then(res => res.json())
                     .then(data => {
                         if (data.success) {
-                            document.getElementById('order-status-badge').textContent = newStatus;
+                            document.getElementById('order-status-badge').textContent = 'Order Status: ' + newStatus;
                             document.getElementById('order-status-badge').className = 'badge px-3 py-2 ' + (newStatus ===
                                 'Approved' ? 'bg-green-200 text-green-800' : (newStatus === 'Rejected' ?
                                     'bg-red-200 text-red-800' : 'bg-yellow-200 text-yellow-800'));
                             document.getElementById('approve-btn').disabled = (newStatus === 'Approved');
                             document.getElementById('reject-btn').disabled = (newStatus === 'Rejected');
+                            document.getElementById('pending-btn').disabled = (newStatus === 'Pending');
+                            alert('Order status updated successfully.');
                         } else {
                             alert('Failed to update status.');
                         }
@@ -182,6 +197,9 @@
             };
             document.getElementById('reject-btn').onclick = function() {
                 updateStatus('Rejected');
+            };
+            document.getElementById('pending-btn').onclick = function() {
+                updateStatus('Pending');
             };
         </script>
     @endpush

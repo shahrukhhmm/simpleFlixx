@@ -199,10 +199,15 @@ class OrderController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|in:Approved,Rejected,Pending'
+            'status' => 'required|in:Approved,Rejected,Pending',
+            'note' => 'nullable|string',
         ]);
         $order = Order::findOrFail($id);
         $order->status = $request->status;
+        $order->doctor_id = Auth::id();
+        if ($request->note) {
+            $order->note = $request->note;
+        }
         $order->save();
         return response()->json(['success' => true]);
     }
@@ -217,5 +222,11 @@ class OrderController extends Controller
     public function success()
     {
         return view('admin.pages.orders.success');
+    }
+
+    public function showPharmacy($id)
+    {
+        $order = Order::with('user', 'doctor')->findOrFail($id);
+        return view('admin.pages.pharmacy.orders', compact('order'));
     }
 }

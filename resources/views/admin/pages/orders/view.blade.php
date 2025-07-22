@@ -36,7 +36,11 @@
                                     <td>{{ $order->created_at }}</td>
                                     <td>{{ $order->updated_at }}</td>
                                     <td>
-                                        <a href="{{ route('order.show', $order->id) }}" class="btn btn-sm btn-info">View Details</a>
+                                        @if(Auth::user()->role == 'pharmacy')
+                                            <a href="{{ route('order.show.pharmacy', $order->id) }}" class="btn btn-sm btn-info">View Details</a>
+                                        @else
+                                            <a href="{{ route('order.show', $order->id) }}" class="btn btn-sm btn-info">View Details</a>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

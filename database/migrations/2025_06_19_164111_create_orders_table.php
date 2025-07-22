@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-           $table->id();
+            $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('doctor_id')->nullable()->constrained()->onDelete('cascade');
             $table->json('health_history')->nullable();
             $table->json('weight_management_history')->nullable();
             $table->json('medication_requests')->nullable();
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->json('consent')->nullable();
             $table->json('payment_details')->nullable();
             $table->string('status')->default('pending');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

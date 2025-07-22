@@ -72,7 +72,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/success', [OrderController::class, 'success'])->name('order.success');
     Route::get('/orders/show/{id}', [OrderController::class, 'show'])->name('order.show');
     Route::post('/orders/update-status/{id}', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
-
+    Route::get('/orders/show/pharmacy/{id}', [OrderController::class, 'showPharmacy'])->name('order.show.pharmacy');
 
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::post('/chat/send', [ChatController::class, 'send'])->name('chat.send');
